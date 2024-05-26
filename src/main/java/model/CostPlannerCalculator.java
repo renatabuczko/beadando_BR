@@ -19,6 +19,7 @@ public class CostPlannerCalculator {
 
    private final BooleanProperty modified = new SimpleBooleanProperty(false);
 
+
    public CostPlannerCalculator(){
       content.addListener((observable, oldValue, newValue) -> {
          modified.set(true);
@@ -64,13 +65,28 @@ public class CostPlannerCalculator {
    }
 
 
-   public void addAllCost(String bills){
+   //Számítás: Saving =eredmény
+   public String calculateSaving(String income, String bills, String generalCost,
+                              String funCost, String foodCost, String healthCost){
        //TODO
+      //eredmény számítása
+      String allCosts = addAllCosts(bills, generalCost, funCost, foodCost, healthCost);
+      return Integer.toString(Integer.parseInt(income)-Integer.parseInt(allCosts));
    }
-   public void calculateSaving(String income, String bills){
-       //TODO
 
+   //string beolvas => int sum visszaad:
+   public String addAllCosts(String bills, String generalCost,
+                            String funCost, String foodCost, String healthCost) {
+      return Integer.toString(Integer.parseInt(bills)+Integer.parseInt(generalCost)+Integer.parseInt(funCost)
+              +Integer.parseInt(foodCost)+Integer.parseInt(healthCost));
    }
-
+//Százalék számítása:
+   public String percentPickedCost(String pickedCost, String ktg2,
+                                   String ktg3, String ktg4, String ktg5) throws InvalidDivisionException{
+      String allCosts = addAllCosts(pickedCost, ktg2, ktg3, ktg4, ktg5);
+      if (allCosts.equals("0")) throw new InvalidDivisionException("Dividing by ZERO is not allowed!");
+      float result = ((float)Integer.parseInt(pickedCost)/(float)Integer.parseInt(allCosts))*100;
+      return String.format("%.2f",result);
+}
 
 }

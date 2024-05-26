@@ -14,10 +14,10 @@
 <AnchorPane prefHeight="467.0" prefWidth="801.0" style="-fx-background-color: #F3F6FE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CostPlannerController">
    <children>
       <Label layoutX="27.0" layoutY="75.0" prefHeight="28.0" prefWidth="184.0" text="Bevétel (fizetés, bér, utalás stb.): " />
-      <TextField fx:id="income" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="77.0" onAction="#incomeChanged" prefHeight="25.0" prefWidth="175.0" />
+      <TextField fx:id="income" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="77.0" prefHeight="25.0" prefWidth="175.0" text="0" />
       <Label layoutX="396.0" layoutY="81.0" prefHeight="17.0" prefWidth="30.0" text="HUF" />
       <Label layoutX="25.0" layoutY="140.0" prefHeight="28.0" prefWidth="184.0" text="Számlák:" />
-      <TextField fx:id="bills" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="142.0" onAction="#billChanged" prefHeight="25.0" prefWidth="175.0" />
+      <TextField fx:id="bills" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="142.0" prefHeight="25.0" prefWidth="175.0" text="0" />
       <Label layoutX="396.0" layoutY="146.0" prefHeight="17.0" prefWidth="30.0" text="HUF" />
       <Label alignment="CENTER" layoutX="11.0" layoutY="109.0" prefHeight="17.0" prefWidth="405.0" text="Költségek:" textAlignment="CENTER" textFill="#cd2e2e">
          <font>
@@ -30,16 +30,16 @@
          </font>
       </Label>
       <Label layoutX="25.0" layoutY="175.0" prefHeight="28.0" prefWidth="184.0" text="Befizetések (tagdíj, iskola stb.): " />
-      <TextField fx:id="generalcost" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="177.0" onAction="#generalCostChanged" prefHeight="25.0" prefWidth="175.0" />
+      <TextField fx:id="generalcost" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="177.0" prefHeight="25.0" prefWidth="175.0" text="0" />
       <Label layoutX="396.0" layoutY="181.0" prefHeight="17.0" prefWidth="30.0" text="HUF" />
       <Label layoutX="25.0" layoutY="213.0" prefHeight="28.0" prefWidth="184.0" text="Szórakozás (nyaralás, sport stb.):" />
-      <TextField fx:id="funcost" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="215.0" onAction="#funCostChanged" prefHeight="25.0" prefWidth="175.0" />
+      <TextField fx:id="funcost" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="215.0" prefHeight="25.0" prefWidth="175.0" text="0" />
       <Label layoutX="396.0" layoutY="219.0" prefHeight="17.0" prefWidth="30.0" text="HUF" />
       <Label layoutX="25.0" layoutY="250.0" prefHeight="28.0" prefWidth="184.0" text="Bevásárlás (háztartás):" />
-      <TextField fx:id="foodcost" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="252.0" onAction="#foodCostChanged" prefHeight="25.0" prefWidth="175.0" />
+      <TextField fx:id="foodcost" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="252.0" prefHeight="25.0" prefWidth="175.0" text="0" />
       <Label layoutX="396.0" layoutY="256.0" prefHeight="17.0" prefWidth="30.0" text="HUF" />
       <Label layoutX="27.0" layoutY="291.0" prefHeight="28.0" prefWidth="184.0" text="Egészség (gyógyszer, orvos stb.):" />
-      <TextField fx:id="healthcost" alignment="CENTER_RIGHT" layoutX="213.0" layoutY="293.0" onAction="#healthCostChanged" prefHeight="25.0" prefWidth="175.0" />
+      <TextField fx:id="healthcost" alignment="CENTER_RIGHT" layoutX="213.0" layoutY="293.0" prefHeight="25.0" prefWidth="175.0" text="0" />
       <Label layoutX="398.0" layoutY="297.0" prefHeight="17.0" prefWidth="30.0" text="HUF" />
       <Label layoutX="49.0" layoutY="333.0" prefHeight="66.0" prefWidth="160.0" text="EGYENLEG:">
          <font>
@@ -56,17 +56,17 @@
             <Font name="Century Schoolbook Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="generalCostP" alignment="CENTER_RIGHT" layoutX="428.0" layoutY="174.0" prefHeight="27.0" prefWidth="55.0" text="0,00">
+      <Label alignment="CENTER_RIGHT" layoutX="428.0" layoutY="174.0" prefHeight="27.0" prefWidth="55.0" text="0,00">
          <font>
             <Font name="Century Schoolbook Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="funCostP" alignment="CENTER_RIGHT" layoutX="428.0" layoutY="212.0" prefHeight="27.0" prefWidth="55.0" text="0,00">
+      <Label alignment="CENTER_RIGHT" layoutX="428.0" layoutY="212.0" prefHeight="27.0" prefWidth="55.0" text="0,00">
          <font>
             <Font name="Century Schoolbook Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="foodCostP" alignment="CENTER_RIGHT" layoutX="428.0" layoutY="249.0" prefHeight="27.0" prefWidth="55.0" text="0,00">
+      <Label alignment="CENTER_RIGHT" layoutX="428.0" layoutY="249.0" prefHeight="27.0" prefWidth="55.0" text="0,00">
          <font>
             <Font name="Century Schoolbook Bold Italic" size="12.0" />
          </font>
@@ -74,6 +74,11 @@
       <Label fx:id="healthcostP" alignment="CENTER_RIGHT" layoutX="428.0" layoutY="290.0" prefHeight="27.0" prefWidth="55.0" text="0,00">
          <font>
             <Font name="Century Schoolbook Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="resultP" alignment="CENTER_RIGHT" layoutX="402.0" layoutY="351.0" prefHeight="30.0" prefWidth="108.0" text="0,00 %">
+         <font>
+            <Font name="Century Schoolbook Bold Italic" size="24.0" />
          </font>
       </Label>
       <Button fx:id="saveAs" layoutX="483.0" layoutY="407.0" mnemonicParsing="false" onAction="#saveAs" prefHeight="46.0" prefWidth="131.0" text="Save As">
@@ -108,11 +113,21 @@
             </RadialGradient>
          </fill>
       </Text>
+      <Label alignment="CENTER_RIGHT" layoutX="429.0" layoutY="76.0" prefHeight="27.0" prefWidth="55.0" text="100">
+         <font>
+            <Font name="Century Schoolbook Bold Italic" size="12.0" />
+         </font>
+      </Label>
       <Button fx:id="close" layoutX="750.0" layoutY="14.0" mnemonicParsing="false" onAction="#onQuit" prefHeight="17.0" prefWidth="30.0" style="-fx-background-color: #8B0000;" text="X" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Century Schoolbook Bold" size="14.0" />
          </font>
       </Button>
+      <Label layoutX="490.0" layoutY="81.0" text="\%">
+         <font>
+            <Font name="Century Schoolbook Bold Italic" size="14.0" />
+         </font>
+      </Label>
       <Label layoutX="490.0" layoutY="143.0" text="\%">
          <font>
             <Font name="Century Schoolbook Bold Italic" size="14.0" />

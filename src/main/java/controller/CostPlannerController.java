@@ -7,7 +7,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.TouchEvent;
 import javafx.stage.FileChooser;
 import model.CostPlannerCalculator;
 import org.tinylog.Logger;
@@ -24,7 +23,9 @@ public class CostPlannerController {
     public Label result;
     public Label billsP;
     public Label healthcostP;
-    public Label resultP;
+    public Label generalCostP;
+    public Label funCostP;
+    public Label foodCostP;
     public Button saveAs;
     public Button save;
     public PieChart pieChartofCosts;
@@ -32,6 +33,8 @@ public class CostPlannerController {
 
 private final CostPlannerCalculator costPlanner = new CostPlannerCalculator();
 
+@FXML
+public void initialize(){};
 
     public void onQuit(ActionEvent actionEvent) {
         Logger.info("Terminating");
@@ -67,5 +70,23 @@ private final CostPlannerCalculator costPlanner = new CostPlannerCalculator();
                 Logger.error(e, "Failed to save file");
             }
         }
+    }
+
+    public void incomeChanged(ActionEvent actionEvent) {
+    }
+
+    public void billChanged(ActionEvent actionEvent) {
+    }
+
+    public void generalCostChanged(ActionEvent actionEvent) {
+    }
+
+    public void funCostChanged(ActionEvent actionEvent) {
+    }
+
+    public void foodCostChanged(ActionEvent actionEvent) {
+    }
+
+    public void healthCostChanged(ActionEvent actionEvent) {
     }
 }
