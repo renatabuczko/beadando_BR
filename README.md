@@ -1,6 +1,7 @@
 Szoftverfejlesztés beadandó 2024
 
 Beadó: Buczkó Renáta
+
 Dátum: 2024. május
 
 Projekt téma:
