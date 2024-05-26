@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -13,12 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import model.CostPlannerCalculator;
 import model.InvalidDivisionException;
 import org.tinylog.Logger;
-
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
@@ -56,7 +52,7 @@ public void initialize(){
                                 .otherwise("")))
         );
 
-    };
+    }
 
     public void onQuit(ActionEvent actionEvent) {
         Logger.info("Terminating");
