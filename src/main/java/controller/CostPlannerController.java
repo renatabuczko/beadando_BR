@@ -2,21 +2,28 @@ package controller;
 
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.CostPlannerCalculator;
 import model.InvalidDivisionException;
 import org.tinylog.Logger;
+
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class CostPlannerController {
     public TextField income;
@@ -37,13 +44,15 @@ public class CostPlannerController {
 
 
 private final CostPlannerCalculator costPlanner = new CostPlannerCalculator();
+    @FXML
     public AnchorPane allPlatform;
+
 
     @FXML
 public void initialize(){
-
-        Bindings.bindBidirectional(income.textProperty(), costPlanner.contentProperty());
-        Platform.runLater(() -> ((Stage) income.getScene().getWindow()).titleProperty().bind(
+        //ha a result modosul, akkor nincs mentve a fajl:
+        Bindings.bindBidirectional(result.textProperty(), costPlanner.contentProperty());
+        Platform.runLater(() -> ((Stage) allPlatform.getScene().getWindow()).titleProperty().bind(
                 Bindings.when(costPlanner.filePathProperty().isNotNull())
                         .then(costPlanner.filePathProperty())
                         .otherwise("Unnamed")
@@ -83,7 +92,7 @@ public void initialize(){
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF",".pdf"),
                 new FileChooser.ExtensionFilter("PNG", ".png"));
 
-        File file = fileChooser.showSaveDialog(null);
+        File file = fileChooser.showSaveDialog(new Stage());
         if (file != null) {
             Logger.debug("Saving file as {}", file);
             try {
@@ -91,6 +100,7 @@ public void initialize(){
             } catch (IOException e) {
                 Logger.error(e, "Failed to save file");
             }
+
         }
     }
 
@@ -203,4 +213,6 @@ public void initialize(){
             alert.show();
         }
     }
+
+
 }
