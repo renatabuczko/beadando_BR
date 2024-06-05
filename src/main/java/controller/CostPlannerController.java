@@ -2,17 +2,15 @@ package controller;
 
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -20,10 +18,10 @@ import model.CostPlannerCalculator;
 import model.InvalidDivisionException;
 import org.tinylog.Logger;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.stream.Collectors;
+
+import static java.lang.Float.parseFloat;
 
 public class CostPlannerController {
     public TextField income;
@@ -60,8 +58,39 @@ public void initialize(){
                                 .then("*")
                                 .otherwise("")))
         );
+        //handlePieChart();
+    }
+
+    @FXML
+    private void handlePieChart() throws NumberFormatException {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                    new PieChart.Data("Számlák", Double.parseDouble(bills.getText())),
+                            new PieChart.Data("Befizetések", Double.parseDouble(generalcost.getText())),
+                            new PieChart.Data("Szórakozás", Double.parseDouble(funcost.getText())),
+                            new PieChart.Data("Bevásárlás", Double.parseDouble(foodcost.getText())),
+                            new PieChart.Data("Egészség", Double.parseDouble(healthcost.getText()))
+                            );
+        pieChartofCosts.setData(pieChartData);
+        pieChartofCosts.setClockwise(true);
+        pieChartofCosts.setLabelLineLength(50);
+        pieChartofCosts.setLabelsVisible(true);
+        pieChartofCosts.setStartAngle(180);
+
 
     }
+
+    @FXML
+    private void handleUpdatePieChart() {
+        handlePieChart();
+
+            pieChartofCosts.getData().get(0).setPieValue(Double.parseDouble(bills.getText()));
+            pieChartofCosts.getData().get(1).setPieValue(Double.parseDouble(generalcost.getText()));
+            pieChartofCosts.getData().get(2).setPieValue(Double.parseDouble(funcost.getText()));
+            pieChartofCosts.getData().get(3).setPieValue(Double.parseDouble(foodcost.getText()));
+            pieChartofCosts.getData().get(4).setPieValue(Double.parseDouble(healthcost.getText()));
+
+    }
+
 
     public void onQuit(ActionEvent actionEvent) {
         Logger.info("Terminating");
@@ -123,11 +152,13 @@ public void initialize(){
                     foodcost.getText(),healthcost.getText()));
             foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
                     generalcost.getText(),healthcost.getText()));
+            handleUpdatePieChart();
         } catch (InvalidDivisionException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
             alert.show();
         }
+        ;
     }
 
     public void generalCostChanged(ActionEvent actionEvent) {
@@ -144,6 +175,7 @@ public void initialize(){
                     foodcost.getText(),healthcost.getText()));
             foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
                     generalcost.getText(),healthcost.getText()));
+            handleUpdatePieChart();
         } catch (InvalidDivisionException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
@@ -165,6 +197,7 @@ public void initialize(){
                     foodcost.getText(),healthcost.getText()));
             foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
                     generalcost.getText(),healthcost.getText()));
+            handleUpdatePieChart();
         } catch (InvalidDivisionException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
@@ -186,6 +219,7 @@ public void initialize(){
                     foodcost.getText(),healthcost.getText()));
             foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
                     generalcost.getText(),healthcost.getText()));
+            handleUpdatePieChart();
         } catch (InvalidDivisionException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
@@ -207,6 +241,7 @@ public void initialize(){
                     foodcost.getText(),healthcost.getText()));
             foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
                     generalcost.getText(),healthcost.getText()));
+            handleUpdatePieChart();
         } catch (InvalidDivisionException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
