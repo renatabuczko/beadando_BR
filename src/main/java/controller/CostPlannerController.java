@@ -58,7 +58,7 @@ public void initialize(){
                                 .then("*")
                                 .otherwise("")))
         );
-        //handlePieChart();
+        handlePieChart();
     }
 
     @FXML
@@ -72,7 +72,7 @@ public void initialize(){
                             );
         pieChartofCosts.setData(pieChartData);
         pieChartofCosts.setClockwise(true);
-        pieChartofCosts.setLabelLineLength(50);
+        pieChartofCosts.setLabelLineLength(20);
         pieChartofCosts.setLabelsVisible(true);
         pieChartofCosts.setStartAngle(180);
 
