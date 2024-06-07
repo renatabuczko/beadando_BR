@@ -129,8 +129,9 @@ public void initialize(){
             } catch (IOException e) {
                 Logger.error(e, "Failed to save file");
             }
-
         }
+
+
     }
 
     public void incomeChanged(ActionEvent actionEvent) {
