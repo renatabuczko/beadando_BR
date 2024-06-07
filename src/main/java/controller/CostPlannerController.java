@@ -138,7 +138,9 @@ public void initialize(){
                 foodcost.getText(),healthcost.getText()));
     }
 
-    public void billChanged(ActionEvent actionEvent) {
+    //Önismétlés elkerülésére:
+
+    public void dataChanged(){
         result.setText(costPlanner.calculateSaving(income.getText(),bills.getText(),generalcost.getText(),funcost.getText(),
                 foodcost.getText(),healthcost.getText()));
         try {
@@ -158,95 +160,28 @@ public void initialize(){
             alert.setContentText(e.getMessage());
             alert.show();
         }
-        ;
+    }
+
+    //Ha a felhasználó módosítja az egyes költségeket:
+
+    public void billChanged(ActionEvent actionEvent) {
+        dataChanged();
     }
 
     public void generalCostChanged(ActionEvent actionEvent) {
-        result.setText(costPlanner.calculateSaving(income.getText(),bills.getText(),generalcost.getText(),funcost.getText(),
-                foodcost.getText(),healthcost.getText()));
-        try {
-            billsP.setText(costPlanner.percentPickedCost(bills.getText(), generalcost.getText(),funcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            generalCostP.setText(costPlanner.percentPickedCost(generalcost.getText(),healthcost.getText(),bills.getText(),
-                    funcost.getText(),foodcost.getText()));
-            healthcostP.setText(costPlanner.percentPickedCost(healthcost.getText(),bills.getText(), generalcost.getText(),
-                    funcost.getText(),foodcost.getText()));
-            funCostP.setText(costPlanner.percentPickedCost(funcost.getText(),bills.getText(), generalcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
-                    generalcost.getText(),healthcost.getText()));
-            handleUpdatePieChart();
-        } catch (InvalidDivisionException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
-        }
+        dataChanged();
     }
 
     public void funCostChanged(ActionEvent actionEvent) {
-        result.setText(costPlanner.calculateSaving(income.getText(),bills.getText(),generalcost.getText(),funcost.getText(),
-                foodcost.getText(),healthcost.getText()));
-        try {
-            billsP.setText(costPlanner.percentPickedCost(bills.getText(), generalcost.getText(),funcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            generalCostP.setText(costPlanner.percentPickedCost(generalcost.getText(),healthcost.getText(),bills.getText(),
-                    funcost.getText(),foodcost.getText()));
-            healthcostP.setText(costPlanner.percentPickedCost(healthcost.getText(),bills.getText(), generalcost.getText(),
-                    funcost.getText(),foodcost.getText()));
-            funCostP.setText(costPlanner.percentPickedCost(funcost.getText(),bills.getText(), generalcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
-                    generalcost.getText(),healthcost.getText()));
-            handleUpdatePieChart();
-        } catch (InvalidDivisionException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
-        }
+        dataChanged();
     }
 
     public void foodCostChanged(ActionEvent actionEvent) {
-        result.setText(costPlanner.calculateSaving(income.getText(),bills.getText(),generalcost.getText(),funcost.getText(),
-                foodcost.getText(),healthcost.getText()));
-        try {
-            billsP.setText(costPlanner.percentPickedCost(bills.getText(), generalcost.getText(),funcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            generalCostP.setText(costPlanner.percentPickedCost(generalcost.getText(),healthcost.getText(),bills.getText(),
-                    funcost.getText(),foodcost.getText()));
-            healthcostP.setText(costPlanner.percentPickedCost(healthcost.getText(),bills.getText(), generalcost.getText(),
-                    funcost.getText(),foodcost.getText()));
-            funCostP.setText(costPlanner.percentPickedCost(funcost.getText(),bills.getText(), generalcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
-                    generalcost.getText(),healthcost.getText()));
-            handleUpdatePieChart();
-        } catch (InvalidDivisionException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
-        }
+        dataChanged();
     }
 
     public void healthCostChanged(ActionEvent actionEvent) {
-        result.setText(costPlanner.calculateSaving(income.getText(),bills.getText(),generalcost.getText(),funcost.getText(),
-                foodcost.getText(),healthcost.getText()));
-        try {
-            billsP.setText(costPlanner.percentPickedCost(bills.getText(), generalcost.getText(),funcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            generalCostP.setText(costPlanner.percentPickedCost(generalcost.getText(),healthcost.getText(),bills.getText(),
-                    funcost.getText(),foodcost.getText()));
-            healthcostP.setText(costPlanner.percentPickedCost(healthcost.getText(),bills.getText(), generalcost.getText(),
-                    funcost.getText(),foodcost.getText()));
-            funCostP.setText(costPlanner.percentPickedCost(funcost.getText(),bills.getText(), generalcost.getText(),
-                    foodcost.getText(),healthcost.getText()));
-            foodCostP.setText(costPlanner.percentPickedCost(foodcost.getText(),funcost.getText(),bills.getText(),
-                    generalcost.getText(),healthcost.getText()));
-            handleUpdatePieChart();
-        } catch (InvalidDivisionException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText(e.getMessage());
-            alert.show();
-        }
+        dataChanged();
     }
 
 
